@@ -1,4 +1,4 @@
-What columns violate 1NF?
+1. What columns violate 1NF?
 
 The column that violate 1NF is :
 food_code
@@ -6,10 +6,10 @@ food_description
 
 they violate rule number 1 that All data must be atomic (every column should only contain a single value) .
 
-What entities do you recognize that could be extracted?
-the entities are : food , venue, memebers and dinners .
+2. What entities do you recognize that could be extracted?
+   the entities are : food , venue, memebers and dinners .
 
-Name all the tables and columns that would make a 3NF compliant solution.
+3. Name all the tables and columns that would make a 3NF compliant solution.
 
 At first , I will create a table for each entity and its relations:
 
@@ -21,3 +21,5 @@ dinners => dinner_id(PK),dinner_date
 venue => venue_code(PK), venue_description
 
 food => food_code(PK), food_description
+
+Joint Table => id(PK),member_id(FK),dinner_id(FK),venue,id(FK)
