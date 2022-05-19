@@ -1,9 +1,11 @@
 const mysql = require("mysql");
-const connection = mysql.createConnection({
+const DBLogin = {
   host: "localhost",
   user: "hyfuser",
   password: "hyfpassword",
-});
+};
+
+const connection = mysql.createConnection(DBLogin);
 
 // Creating Tables
 
@@ -73,7 +75,7 @@ const roomDetails = `INSERT INTO Room (room_name, floor_number)
 const meetingTable = `INSERT INTO Meeting (meeting_title, starting_time, ending_time, room_no)
   VALUES ('Business', '12:30:00','01:30:00',1) ,('Travel Dep', '03:30:00','05:30:00',4),('Discussion', '17:30:00','20:30:00',3),('standup', '08:00:00','10:00:00',2),('Submission', '20:45:00','23:45:00',5)`;
 
-const insertedData = [inviteeData, roomDetails, meetingTable];
+const dataToInsert = [inviteeData, roomDetails, meetingTable];
 
 const insert = (connection, data) => {
   connection.query(data, (error) => {
@@ -83,7 +85,7 @@ const insert = (connection, data) => {
   });
 };
 
-insertedData.forEach((data) => {
+dataToInsert.forEach((data) => {
   insert(connection, data);
 });
 connection.end();

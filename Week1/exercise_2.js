@@ -42,7 +42,7 @@ const topSurfaceAreaCountries = `SELECT name FROM country ORDER BY surfacearea D
 const mostPopulatedCities = `SELECT name,population FROM city ORDER BY population DESC LIMIT 10`;
 
 //What is the population number of the world?
-const worldPopulation = `SELECT SUM(population) AS worldPopulation FROM countrygit`;
+const worldPopulation = `SELECT SUM(population) AS worldPopulation FROM country`;
 
 const queries = [
   countriesGreaterThan8Million,
@@ -57,15 +57,16 @@ const queries = [
   worldPopulation,
 ];
 
-const executingFunction = (connection, query) => {
+const executeQuery = (connection, query) => {
   connection.query(query, (error, result) => {
     if (error) throw error;
-    console.log(result);
+    console.log(query);
+    console.table(result);
   });
 };
 
 queries.forEach((query) => {
-  executingFunction(connection, query);
+  executeQuery(connection, query);
 });
 
 connection.end();
