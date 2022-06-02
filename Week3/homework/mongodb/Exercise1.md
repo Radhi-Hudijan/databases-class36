@@ -22,4 +22,6 @@ venue => venue_code(PK), venue_description
 
 food => food_code(PK), food_description
 
-Joint Table => id(PK),member_id(FK),dinner_id(FK),venue,id(FK)
+Junction Table:
+Reservation Table => id(PK),member_id(FK),dinner_id(FK),venue,id(FK)
+FoodDinner Table => id(PK),dinner_id(FK),food_code(FK)
