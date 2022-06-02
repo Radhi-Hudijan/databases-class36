@@ -40,10 +40,10 @@ const createResearchPapersTable = `CREATE TABLE IF NOT EXISTS research_Papers(
 
 // Creating JOINT table
 const createPaperAuthorTable = `CREATE TABLE IF NOT EXISTS Paper_Author(
-    Author_no INT NOT NULL ,
+    author_no INT NOT NULL ,
     paper_id INT NOT NULL,
-    CONSTRAINT FK_paperID FOREIGN KEY (paper_id) REFERENCES research_Papers(paper_id) ,
-    CONSTRAINT FK_authorNO FOREIGN KEY (author_no) REFERENCES authors(author_no) ,
+    FOREIGN KEY (paper_id) REFERENCES research_Papers(paper_id) ,
+    FOREIGN KEY (author_no) REFERENCES authors(author_no) ,
     PRIMARY KEY(paper_id,author_no))`;
 
 //insert values to tables
@@ -97,13 +97,11 @@ VALUES ('Microcontroller Based Automatic','Collision','2020-12-10'),
 ('Vegetarianism','ICDCS - IEEE','2000-07-07'),
 ('Schizophrenia','IPDPS - IEEE ','1990-01-01')`;
 
-const paperAuthorDataToInsert = `INSERT INTO Paper_Author(Author_no,paper_id)
-VALUES (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10),
-(11,11),(12,12),(13,13),(14,14),(15,15),(1,16),(2,17),(3,18),(4,19),(5,20),
-(6,21),(7,22),(8,23),(9,24),(10,25),(11,26),(12,27),(13,28),(14,29),(15,30) `;
+const paperAuthorDataToInsert = `INSERT INTO Paper_Author(author_no,paper_id)
+VALUES (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9), (10, 10), (11, 11), (12, 12), (13, 13), (14, 14), (15, 15), (1, 16), (2, 17), (3, 18), (4, 19), (5, 20), (6, 21), (7, 22), (8, 23), (9, 24), (10, 25), (11, 26), (12, 27), (13, 28), (14, 29), (15, 30); `;
 
 const addForeignKeyToMentorColumn = `ALTER TABLE authors 
-    ADD CONSTRAINT FK_mentor FOREIGN KEY(mentor) REFERENCES authors(author_no)
+    ADD CONSTRAINT FOREIGN KEY(mentor) REFERENCES authors(author_no)
 `;
 const exerciseTwoQueries = [
   createResearchPapersTable,
