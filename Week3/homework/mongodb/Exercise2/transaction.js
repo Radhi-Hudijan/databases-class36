@@ -44,6 +44,7 @@ const transferTransaction = () => {
       if (error) {
         console.log(`Error found in ${query}`, error);
         connection.query(rollBack);
+        connection.end();
       }
     });
   });
